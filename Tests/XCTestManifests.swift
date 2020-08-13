@@ -662,6 +662,7 @@ extension RulesTests {
         ("testEnumCaseIndentingCommasWithXcodeStyle", testEnumCaseIndentingCommasWithXcodeStyle),
         ("testEnumCaseLessThanEnumCase", testEnumCaseLessThanEnumCase),
         ("testEnumCaseNotEqualYodaCondition", testEnumCaseNotEqualYodaCondition),
+        ("testEnumCaseSplitOverMultipleLines", testEnumCaseSplitOverMultipleLines),
         ("testEnumCaseWrappedIfWithXcodeStyle", testEnumCaseWrappedIfWithXcodeStyle),
         ("testEnumIfCaseEndifIndenting", testEnumIfCaseEndifIndenting),
         ("testExponentialGrouping", testExponentialGrouping),

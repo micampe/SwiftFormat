@@ -3453,30 +3453,20 @@ public struct _FormatRules {
         options: [],
         sharedOptions: ["linebreaks"]
     ) { formatter in
-        formatter.forEach(.keyword("enum")) { idx, _ in
-            if let start = formatter.index(of: .startOfScope("{"), after: idx),
-                let end = formatter.index(of: .endOfScope("}"), after: start)
-            {
-                var lastCase = start
-
-                while let caseKeywordIndex = formatter.index(of: .keyword("case"), after: lastCase),
-                    let breaklineIndex = formatter.index(of: .linebreak, after: caseKeywordIndex)
-                {
-                    for jdx in (caseKeywordIndex + 1) ... breaklineIndex {
-                        guard
-                            let token = formatter.token(at: jdx),
-                            token == .delimiter(","),
-                            formatter.index(of: .startOfScope("("), in: lastCase ..< jdx) == nil else { continue }
-
-                        formatter.removeToken(at: jdx)
-                        formatter.insertLinebreak(at: jdx)
-                        formatter.insertSpace(formatter.indentForLine(at: jdx), at: jdx + 1)
-                        formatter.insertToken(.keyword("case"), at: jdx + 2)
-                        formatter.insertToken(.space(" "), at: jdx + 3)
-                    }
-
-                    lastCase = breaklineIndex
-                }
+        formatter.forEach(.keyword("case")) { i, _ in
+            guard formatter.isEnumCase(at: i),
+                let end = formatter.index(of: .linebreak, after: i)
+            else {
+                return
+            }
+            var index = i
+            let indent = formatter.indentForLine(at: i)
+            while let commaIndex = formatter.index(of: .delimiter(","), in: (index + 1) ..< end) {
+                formatter.replaceToken(at: commaIndex, with: .keyword("case"))
+                formatter.insertSpace(" ", at: commaIndex + 1)
+                formatter.insertLinebreak(at: commaIndex)
+                formatter.insertSpace(indent, at: commaIndex + 1)
+                index = commaIndex
             }
         }
     }
