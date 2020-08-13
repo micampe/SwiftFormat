@@ -21,6 +21,7 @@
 * [linebreaks](#linebreaks)
 * [modifierOrder](#modifierOrder)
 * [multilineEnumCases](#multilineEnumCases)
+* [multilineSwitchCases](#multilineSwitchCases)
 * [numberFormatting](#numberFormatting)
 * [preferKeyPath](#preferKeyPath)
 * [ranges *(deprecated)*](#ranges)
@@ -614,6 +615,10 @@ Option | Description
 ## multilineEnumCases
 
 Writes one enum case per line.
+
+## multilineSwitchCases
+
+Writes one switch case per line.
 
 ## numberFormatting
 

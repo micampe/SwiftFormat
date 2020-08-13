@@ -919,6 +919,7 @@ extension RulesTests {
         ("testMultilineInitBraceOnNextLine", testMultilineInitBraceOnNextLine),
         ("testMultilineMapPropertyToKeyPath", testMultilineMapPropertyToKeyPath),
         ("testMultilineStringWithEscapedLinebreak", testMultilineStringWithEscapedLinebreak),
+        ("testMultilineSwitchCases", testMultilineSwitchCases),
         ("testMultipleAttributesNotSeparated", testMultipleAttributesNotSeparated),
         ("testMultipleClosureArgumentUnwrapped", testMultipleClosureArgumentUnwrapped),
         ("testMultipleNestedClosures", testMultipleNestedClosures),
